@@ -6,7 +6,7 @@ const FEATURES = [
   {
     icon: <FlameIcon />,
     title: "甲種防火認證",
-    desc: "全系列防火門取得 CNS 6382 甲種一小時防火時效認證，通過各縣市消防單位查驗，公設與逃生通道皆可合法安裝。",
+    desc: "全系列防火門取得 11227-1 一小時防火時效認證，通過各縣市消防單位查驗，公設與逃生通道皆可合法安裝。",
   },
   {
     icon: <RulerIcon />,
@@ -205,11 +205,11 @@ function Contact() {
             </li>
             <li className="flex items-center gap-3">
               <MapPinIcon />
-              新北市土城區中央路二段 88 號
+              高雄市鳥松區北平路51巷20-7號
             </li>
             <li className="flex items-center gap-3">
               <ClockIcon />
-              週一至週六 09:00–18:00
+              週一至週五 09:00–18:00
             </li>
           </ul>
         </div>
