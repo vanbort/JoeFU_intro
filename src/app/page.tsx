@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 const FEATURES = [
   {
     icon: <FlameIcon />,
-    title: "甲種防火認證",
+    title: "60A防火認證",
     desc: "全系列防火門取得 11227-1 一小時防火時效認證，通過各縣市消防單位查驗，公設與逃生通道皆可合法安裝。",
   },
   {
@@ -16,7 +16,7 @@ const FEATURES = [
   {
     icon: <LayersIcon />,
     title: "氣密隔音結構",
-    desc: "門片內填岩棉並搭配三段式氣密膠條，實測可降低外部噪音與冷氣外洩，冬天也不會有明顯的穿堂風。",
+    desc: "門片內填防火板材並搭配三段式氣密膠條，實測可降低外部噪音與冷氣外洩，冬天也不會有明顯的穿堂風。",
   },
   {
     icon: <WrenchIcon />,
