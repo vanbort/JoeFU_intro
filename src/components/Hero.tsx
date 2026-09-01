@@ -1,3 +1,6 @@
+import Image from "next/image";
+import heroPhoto from "../../public/photos/door-entrance-01.jpg";
+
 const STATS = [
   { value: "18", suffix: "年", label: "門業製造經驗" },
   { value: "3,200", suffix: "+", label: "完工案例" },
@@ -7,15 +10,8 @@ const STATS = [
 export default function Hero() {
   return (
     <section className="relative overflow-hidden px-6 pb-20 pt-20 lg:px-8 lg:pt-28">
-      <span
-        aria-hidden
-        className="pointer-events-none absolute -right-10 top-10 select-none font-serif text-[16rem] leading-none text-zinc-900/[0.03]"
-      >
-        門
-      </span>
-
-      <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative">
+      <div className="relative z-10 mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
+        <div className="max-w-xl">
           <p className="mb-6 flex items-center gap-3 text-xs tracking-[0.3em] text-amber-700">
             <span className="h-px w-8 bg-amber-600" />
             玄關門・防火門 專業訂製
@@ -57,50 +53,17 @@ export default function Hero() {
           </dl>
         </div>
 
-        <div className="mx-auto flex justify-center gap-6">
-          <DoorGraphic variant="entrance" label="玄關門" />
-          <DoorGraphic variant="fire" label="防火門" />
+        <div className="relative mx-auto aspect-[4/5] w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-zinc-900/25 sm:max-w-xl lg:max-w-none">
+          <Image
+            src={heroPhoto}
+            alt="喬福門業實際完工案例：胡桃木玄關門"
+            fill
+            priority
+            sizes="(min-width: 1024px) 58vw, 92vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>
-  );
-}
-
-function DoorGraphic({ variant, label }: { variant: "entrance" | "fire"; label: string }) {
-  const isFire = variant === "fire";
-  return (
-    <div className="flex flex-col items-center gap-3">
-      <div
-        className={`relative h-[300px] w-[150px] overflow-hidden rounded-t-[80px] border shadow-xl sm:h-[360px] sm:w-[180px] ${
-          isFire
-            ? "border-zinc-700 bg-gradient-to-b from-zinc-700 to-zinc-800"
-            : "border-zinc-800 bg-gradient-to-b from-zinc-800 to-zinc-950"
-        }`}
-      >
-        {isFire ? (
-          <div className="absolute inset-3 grid grid-cols-4 gap-2 sm:grid-cols-5">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <span key={i} className="h-1 w-1 rounded-full bg-white/10" />
-            ))}
-          </div>
-        ) : (
-          <>
-            <span className="absolute left-1/2 top-8 h-[75%] w-px -translate-x-1/2 bg-white/10 sm:top-10" />
-            <span className="absolute inset-x-6 top-10 h-24 rounded-sm bg-white/[0.06] sm:top-14 sm:h-32" />
-          </>
-        )}
-        <span
-          className={`absolute right-4 top-1/2 h-8 w-1.5 -translate-y-1/2 rounded-full ${
-            isFire ? "bg-red-500/70" : "bg-amber-500"
-          }`}
-        />
-        {isFire && (
-          <span className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-sm bg-red-500/90 px-2 py-0.5 text-[9px] font-medium tracking-wide text-white">
-            FIRE DOOR 60min
-          </span>
-        )}
-      </div>
-      <span className="text-xs tracking-[0.2em] text-zinc-500">{label}</span>
-    </div>
   );
 }

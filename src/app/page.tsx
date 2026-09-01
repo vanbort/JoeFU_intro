@@ -1,12 +1,17 @@
+import Image, { type StaticImageData } from "next/image";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import doorEntrance02 from "../../public/photos/door-entrance-02.jpg";
+import doorFire01 from "../../public/photos/door-fire-01.jpg";
+import doorEscape01 from "../../public/photos/door-escape-01.jpg";
+import doorFloodgate01 from "../../public/photos/door-floodgate-01.jpg";
 
 const FEATURES = [
   {
     icon: <FlameIcon />,
     title: "60A防火認證",
-    desc: "全系列防火門取得 11227-1 一小時防火時效認證，通過各縣市消防單位查驗，公設與逃生通道皆可合法安裝。",
+    desc: "全系列防火門取得 11227-1 一小時防火時效認證，通過各縣市消防單位查驗，從玄關門.公設與逃生通道皆可合法安裝。",
   },
   {
     icon: <RulerIcon />,
@@ -16,12 +21,12 @@ const FEATURES = [
   {
     icon: <LayersIcon />,
     title: "氣密隔音結構",
-    desc: "門片內填防火板材並搭配三段式氣密膠條，實測可降低外部噪音與冷氣外洩，冬天也不會有明顯的穿堂風。",
+    desc: "門片內填防火消音板材並搭配防火膠條，可降低噪音與冷氣外洩。",
   },
   {
     icon: <WrenchIcon />,
     title: "到府安裝驗收",
-    desc: "從丈量、生產到安裝由同一組師傅跟案，完工後現場測試開闔角度與五金鬆緊，當場排除問題才算完工。",
+    desc: "從丈量、生產到安裝一條龍服務，完工後現場測試開闔角度與五金鬆緊，當場排除問題驗收才算完工。",
   },
 ];
 
@@ -49,15 +54,14 @@ const PROCESS = [
 ];
 
 const CERTS = [
-  "CNS 6382 甲種認證",
-  "ISO 9001 品質管理",
-  "消防署列管工廠",
-  "建材履歷可追溯",
+  "CNS 11227-1 防火門測試規範 成大防火實驗室權威認證",
+  "CNS 15038 建築用門遮煙性試驗法",
+  "TABC台灣建築中心 防火門檢測認證",
 ];
 
 export default function Home() {
   return (
-    <div className="flex flex-col bg-stone-50 text-zinc-900">
+    <div className="flex flex-col text-zinc-900">
       <Header />
       <Hero />
       <Features />
@@ -72,7 +76,7 @@ export default function Home() {
 
 function Features() {
   return (
-    <section id="why" className="border-t border-zinc-200 bg-white px-6 py-24 lg:px-8">
+    <section id="why" className="border-t border-zinc-200 bg-white/70 px-6 py-24 backdrop-blur-sm lg:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="max-w-xl">
           <p className="text-xs tracking-[0.3em] text-amber-700">WHY JOE FU</p>
@@ -99,18 +103,32 @@ function Products() {
     <section id="products" className="bg-zinc-950 px-6 py-24 text-stone-50 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <p className="text-xs tracking-[0.3em] text-amber-500">PRODUCTS</p>
-        <h2 className="mt-4 font-serif text-3xl sm:text-4xl">兩大產品系列</h2>
+        <h2 className="mt-4 font-serif text-3xl sm:text-4xl">產品系列</h2>
 
-        <div className="mt-14 grid gap-8 lg:grid-cols-2">
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <ProductCard
+            image={doorEntrance02}
             title="玄關門"
             desc="以住宅氣密與質感為出發，門片可搭配木紋、鋼刷或岩板材質，五金鎖點依樓層需求調整。"
             points={["多層膠合鋼板結構", "三段式氣密膠條", "可搭配貓眼、電子鎖預留孔"]}
           />
           <ProductCard
+            image={doorFire01}
             title="防火門"
             desc="適用集合住宅逃生通道、管道間與公設空間，出貨附認證標示與批號，方便物業消防申報。"
             points={["CNS 6382 甲種一小時認證", "防火填充岩棉隔板", "自動閉門器與門縫止煙條"]}
+          />
+          <ProductCard
+            image={doorEscape01}
+            title="逃生梯門"
+            desc="設置於社區安全梯間、屋頂出入口，維持逃生動線暢通並阻絕火煙擴散，符合建築逃生設施規範。"
+            points={["常時關閉式認證", "緊急逃生閂把手", "耐燃鋼板結構"]}
+          />
+          <ProductCard
+            image={doorFloodgate01}
+            title="防水閘門"
+            desc="安裝於地下室車道、機房入口，颱風豪雨時可快速關閉，阻擋雨水灌入地下空間。"
+            points={["不鏽鋼板材防鏽耐候", "橡膠止水條氣密設計", "可搭配手動或電動啟閉"]}
           />
         </div>
       </div>
@@ -119,33 +137,45 @@ function Products() {
 }
 
 function ProductCard({
+  image,
   title,
   desc,
   points,
 }: {
+  image: StaticImageData;
   title: string;
   desc: string;
   points: string[];
 }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-      <h3 className="font-serif text-2xl">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-zinc-400">{desc}</p>
-      <ul className="mt-6 space-y-3">
-        {points.map((p) => (
-          <li key={p} className="flex items-start gap-2 text-sm text-zinc-300">
-            <CheckIcon />
-            {p}
-          </li>
-        ))}
-      </ul>
+    <div className="group relative h-[440px] overflow-hidden rounded-2xl border border-white/10">
+      <Image
+        src={image}
+        alt={title}
+        fill
+        sizes="(min-width: 1024px) 23vw, (min-width: 640px) 45vw, 100vw"
+        className="object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/60 to-zinc-950/10" />
+      <div className="absolute inset-x-0 bottom-0 p-6">
+        <h3 className="font-serif text-xl">{title}</h3>
+        <p className="mt-2.5 text-xs leading-6 text-zinc-300">{desc}</p>
+        <ul className="mt-4 space-y-2">
+          {points.map((p) => (
+            <li key={p} className="flex items-start gap-2 text-xs text-zinc-200">
+              <CheckIcon />
+              {p}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
 
 function Process() {
   return (
-    <section id="process" className="bg-stone-50 px-6 py-24 lg:px-8">
+    <section id="process" className="bg-stone-50/60 px-6 py-24 backdrop-blur-sm lg:px-8">
       <div className="mx-auto max-w-6xl">
         <p className="text-xs tracking-[0.3em] text-amber-700">PROCESS</p>
         <h2 className="mt-4 font-serif text-3xl text-zinc-950 sm:text-4xl">
@@ -171,7 +201,7 @@ function Process() {
 
 function CertStrip() {
   return (
-    <div className="border-y border-zinc-200 bg-white px-6 py-8">
+    <div id="certs" className="border-y border-zinc-200 bg-white/70 px-6 py-8 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-3">
         {CERTS.map((c) => (
           <span key={c} className="text-xs tracking-[0.15em] text-zinc-500">
@@ -201,7 +231,7 @@ function Contact() {
           <ul className="mt-10 space-y-5 text-sm text-zinc-300">
             <li className="flex items-center gap-3">
               <PhoneIcon />
-              02-2345-6789
+              07-7325562
             </li>
             <li className="flex items-center gap-3">
               <MapPinIcon />

@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# raw photo staging (not used by the app; see public/photos for site assets)
+/image/
